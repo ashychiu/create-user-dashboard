@@ -66,7 +66,7 @@ const UserDetails = (props) => {
           <p>
             Phone:{" "}
             <a
-              href={`tel:${website}`}
+              href={`tel:${phone}`}
               className="details__link"
               target="_blank"
               rel="noreferrer"
