@@ -4,6 +4,7 @@ import "./UserList.scss";
 
 const UserList = () => {
   const [userList, setUserList] = useState([]);
+  const [filteredList, setFilteredList] = useState([]);
   const [sortType, setSortType] = useState("name");
   const [query, setQuery] = useState("");
 
@@ -32,7 +33,7 @@ const UserList = () => {
       const searchTerm = query.toLowerCase();
       const filtered = [...userList].filter((user) => {
         if (!query) {
-          return user;
+          return null;
         } else if (
           user.name.toLowerCase().includes(searchTerm) ||
           user.username.toLowerCase().includes(searchTerm) ||
@@ -41,10 +42,12 @@ const UserList = () => {
           return user;
         }
       });
-      setUserList(filtered);
+      setFilteredList(filtered);
     };
     filterUserList(query);
   }, [query]);
+
+  console.log("filteredList:", filteredList);
 
   return (
     <div className="userList">
@@ -75,7 +78,43 @@ const UserList = () => {
       </div>
       {userList.map((user) => {
         return (
-          <div key={user.id} className="userCard__container">
+          <div
+            key={user.id}
+            className={
+              filteredList.length === 0 ? "userCard__container" : "hide"
+            }
+          >
+            <Link to={`/user/${user.id}`}>
+              <div className="userCard">
+                <div className="userCard__avatar"></div>
+                <div className="userCard__info">
+                  <div className="userCard__container">
+                    {user.name}
+                    <br />
+                    {user.username}
+                  </div>
+                  <div className="userCard__container">
+                    <a
+                      href={`mailto:${user.email}`}
+                      className="userCard__email"
+                    >
+                      {user.email.toLowerCase()}
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </div>
+        );
+      })}
+      {filteredList.map((user) => {
+        return (
+          <div
+            key={user.id}
+            className={
+              filteredList.length === 0 ? "hide" : "userCard__container"
+            }
+          >
             <Link to={`/user/${user.id}`}>
               <div className="userCard">
                 <div className="userCard__avatar"></div>
