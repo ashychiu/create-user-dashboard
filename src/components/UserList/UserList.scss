@@ -16,6 +16,12 @@ div.userList > div:last-of-type {
   }
   &__container {
     margin: 1rem;
+    @include tablet {
+      display: flex;
+      justify-content: flex-end;
+      align-content: center;
+      gap: 1rem;
+    }
   }
 }
 .userCard {
