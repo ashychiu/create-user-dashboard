@@ -1,3 +1,5 @@
+@use "./partials/variables" as *;
+
 *,
 *::before,
 *::after {
@@ -7,10 +9,11 @@
 html,
 body,
 #root {
+  color: $primary-dark;
   height: 100vh;
 }
 
 a {
-  color: black;
+  color: $primary-dark;
   text-decoration: none;
 }
