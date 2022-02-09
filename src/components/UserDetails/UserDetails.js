@@ -37,7 +37,7 @@ const UserDetails = (props) => {
     };
     fetchUserDetails();
     fetchPostsByUser();
-  }, []);
+  }, [userId]);
 
   const { name, username, email, phone, website, address, company } = user;
 
@@ -69,6 +69,7 @@ const UserDetails = (props) => {
               href={`tel:${website}`}
               className="details__link"
               target="_blank"
+              rel="noreferrer"
             >
               {phone}
             </a>
@@ -79,6 +80,7 @@ const UserDetails = (props) => {
               href={`http://${website}`}
               className="details__link"
               target="_blank"
+              rel="noreferrer"
             >
               {website}
             </a>
