@@ -1,0 +1,55 @@
+@use "../../styles/partials/mixins" as *;
+
+div > h2 {
+  padding-left: 1rem;
+}
+.details {
+  &__link {
+    color: royalblue;
+  }
+  &__info {
+    padding: 1rem;
+    @include tablet {
+      display: flex;
+      gap: 2rem;
+    }
+  }
+  &__container {
+    margin-bottom: 2rem;
+    @include tablet {
+      padding: 1rem;
+      border: 1px solid #cccccc;
+      flex-basis: 30%;
+    }
+  }
+  &__catchphrase {
+    font-style: italic;
+  }
+}
+.posts {
+  &__heading {
+    padding-top: 2rem;
+    border-top: 1px solid #cccccc;
+    @include tablet {
+      padding-top: 0;
+      border: none;
+    }
+  }
+  &__container {
+    margin: 1rem;
+    @include tablet {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+  }
+  &__card {
+    margin: 2rem 0;
+    border-bottom: 1px solid #cccccc;
+    @include tablet {
+      padding: 1rem;
+      border: 1px solid #cccccc;
+      flex-basis: 30%;
+    }
+  }
+}

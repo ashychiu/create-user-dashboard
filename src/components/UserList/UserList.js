@@ -4,42 +4,27 @@ import "./UserList.scss";
 
 const UserList = () => {
   const [userList, setUserList] = useState([]);
-  console.log(userList);
   const [sortType, setSortType] = useState("name");
   const [query, setQuery] = useState("");
 
   useEffect(() => {
-    fetchUserList();
-  }, []);
-
-  const fetchUserList = () => {
-    fetch("http://jsonplaceholder.typicode.com/users")
-      .then((response) => response.json())
-      .then((json) => setUserList(json));
-  };
-
-  useEffect(() => {
-    const sortUserList = (sortType) => {
-      if (sortType === "name") {
-        const sorted = [...userList].sort((a, b) =>
-          a.name.localeCompare(b.name)
-        );
-        setUserList(sorted);
-      }
-      if (sortType === "username") {
-        const sorted = [...userList].sort((a, b) =>
-          a.username.localeCompare(b.username)
-        );
-        setUserList(sorted);
-      }
-      if (sortType === "email") {
-        const sorted = [...userList].sort((a, b) =>
-          a.email.localeCompare(b.email)
-        );
-        setUserList(sorted);
+    const fetchUserList = async () => {
+      try {
+        const res = await fetch("http://jsonplaceholder.typicode.com/users");
+        const userData = await res.json();
+        if (sortType === "username") {
+          userData.sort((a, b) => a.username.localeCompare(b.username));
+        } else if (sortType === "email") {
+          userData.sort((a, b) => a.email.localeCompare(b.email));
+        } else {
+          userData.sort((a, b) => a.name.localeCompare(b.name));
+        }
+        setUserList(userData);
+      } catch (err) {
+        console.log(err);
       }
     };
-    sortUserList(sortType);
+    fetchUserList();
   }, [sortType]);
 
   useEffect(() => {
@@ -66,28 +51,33 @@ const UserList = () => {
     <div className="userList">
       <h1 className="userList__heading">Users</h1>
       <div className="userList__container">
-        <h4>Search</h4>
-        <input
-          onChange={(e) => {
-            setQuery(e.target.value);
-            console.log("input: ", e.target.value);
-            console.log("query: ", query);
-          }}
-        />
-        <h4>Sort by</h4>
-        <select onChange={(e) => setSortType(e.target.value)}>
-          <option value="name" defaultValue="selected">
-            Name
-          </option>
-          <option value="username">Username</option>
-          <option value="email">Email</option>
-        </select>
+        <div>
+          <h4>Search</h4>
+          <input
+            className="userList__searchbar"
+            onChange={(e) => {
+              setQuery(e.target.value);
+              console.log("input: ", e.target.value);
+              console.log("query: ", query);
+            }}
+          />
+        </div>
+        <div>
+          <h4>Sort by</h4>
+          <select onChange={(e) => setSortType(e.target.value)}>
+            <option value="name" defaultValue="selected">
+              Name
+            </option>
+            <option value="username">Username</option>
+            <option value="email">Email</option>
+          </select>
+        </div>
       </div>
       {userList.map((user) => {
         return (
-          <div className="userCard__container">
+          <div key={user.id} className="userCard__container">
             <Link to={`/user/${user.id}`}>
-              <div key={user.id} className="userCard">
+              <div className="userCard">
                 <div className="userCard__avatar"></div>
                 <div className="userCard__info">
                   <div className="userCard__container">
