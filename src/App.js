@@ -9,7 +9,6 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        {/* <Header /> */}
         <Switch>
           <Route path="/" exact component={UserList} />
           <Route
@@ -20,7 +19,6 @@ function App() {
             }}
           />
         </Switch>
-        {/* <Footer /> */}
       </BrowserRouter>
     </div>
   );
