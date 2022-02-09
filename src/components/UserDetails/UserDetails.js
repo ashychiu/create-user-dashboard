@@ -64,7 +64,14 @@ const UserDetails = (props) => {
             </a>
           </p>
           <p>
-            Phone: <span className="details__link">{phone}</span>
+            Phone:{" "}
+            <a
+              href={`tel:${website}`}
+              className="details__link"
+              target="_blank"
+            >
+              {phone}
+            </a>
           </p>
           <p>
             Website:{" "}
