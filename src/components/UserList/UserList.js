@@ -47,7 +47,7 @@ const UserList = () => {
     filterUserList(query);
   }, [query]);
 
-  console.log("filteredList:", filteredList);
+  const listToRender = filteredList.length === 0 ? userList : filteredList;
 
   return (
     <div className="userList">
@@ -76,45 +76,9 @@ const UserList = () => {
           </select>
         </div>
       </div>
-      {userList.map((user) => {
+      {listToRender.map((user) => {
         return (
-          <div
-            key={user.id}
-            className={
-              filteredList.length === 0 ? "userCard__container" : "hide"
-            }
-          >
-            <Link to={`/user/${user.id}`}>
-              <div className="userCard">
-                <div className="userCard__avatar"></div>
-                <div className="userCard__info">
-                  <div className="userCard__container">
-                    {user.name}
-                    <br />
-                    {user.username}
-                  </div>
-                  <div className="userCard__container">
-                    <a
-                      href={`mailto:${user.email}`}
-                      className="userCard__email"
-                    >
-                      {user.email.toLowerCase()}
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </Link>
-          </div>
-        );
-      })}
-      {filteredList.map((user) => {
-        return (
-          <div
-            key={user.id}
-            className={
-              filteredList.length === 0 ? "hide" : "userCard__container"
-            }
-          >
+          <div key={user.id} className="userCard__container">
             <Link to={`/user/${user.id}`}>
               <div className="userCard">
                 <div className="userCard__avatar"></div>
