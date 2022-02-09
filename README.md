@@ -13,6 +13,9 @@ React, SASS, React Router
 To download this project and view it locally, run the following commands in your terminal:
 
 git clone git@github.com:ashychiu/create-user-dashboard.git
+
 cd create-user-dashboard
+
 npm install
+
 npm start
