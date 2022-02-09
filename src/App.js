@@ -5,19 +5,17 @@ import "./styles/global.scss";
 
 function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Switch>
-          <Route path="/" exact component={UserList} />
-          <Route
-            path="/user/:userId"
-            render={(routerProps) => {
-              return <UserDetails {...routerProps} />;
-            }}
-          />
-        </Switch>
-      </BrowserRouter>
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/" exact component={UserList} />
+        <Route
+          path="/user/:userId"
+          render={(routerProps) => {
+            return <UserDetails {...routerProps} />;
+          }}
+        />
+      </Switch>
+    </BrowserRouter>
   );
 }
 
