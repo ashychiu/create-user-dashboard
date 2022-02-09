@@ -47,7 +47,7 @@ const UserList = () => {
     filterUserList(query);
   }, [query]);
 
-  const listToRender = filteredList.length === 0 ? userList : filteredList;
+  const listToRender = query ? filteredList : userList;
 
   return (
     <div className="userList">
