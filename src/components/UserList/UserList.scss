@@ -1,11 +1,21 @@
 @use "../../styles/partials/mixins" as *;
 
-div.userList > div:nth-of-type(odd) {
-  background: #fafafa;
+div.userList > div:nth-of-type(even) {
+  background: #f1f1f1;
+}
+
+div.userList > div:last-of-type {
+  @include tablet {
+    border-bottom: 1px solid #cccccc;
+  }
 }
 .userList {
+  padding-bottom: 2rem;
   &__heading {
     margin-left: 1rem;
+  }
+  &__container {
+    margin: 1rem;
   }
 }
 .userCard {
@@ -30,5 +40,8 @@ div.userList > div:nth-of-type(odd) {
       flex-direction: row;
       justify-content: space-between;
     }
+  }
+  &__email {
+    color: blue;
   }
 }
