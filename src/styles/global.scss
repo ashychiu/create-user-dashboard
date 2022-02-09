@@ -1,0 +1,19 @@
+@use "./partials/variables" as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  color: $primary-dark;
+  height: 100vh;
+}
+
+a {
+  color: $primary-dark;
+  text-decoration: none;
+}
