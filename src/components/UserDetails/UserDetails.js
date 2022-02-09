@@ -8,7 +8,6 @@ const UserDetails = (props) => {
   const [user, setUser] = useState({});
   const [posts, setPosts] = useState([]);
   const [isLoading, setLoading] = useState(true);
-  console.log(isLoading);
 
   useEffect(() => {
     const fetchUserDetails = async () => {
@@ -30,7 +29,6 @@ const UserDetails = (props) => {
           `http://jsonplaceholder.typicode.com/posts?userId=${userId}`
         );
         const postData = await res.json();
-        console.log("postData: ", postData);
         setPosts(postData);
         setLoading(false);
       } catch (err) {
@@ -39,21 +37,7 @@ const UserDetails = (props) => {
     };
     fetchUserDetails();
     fetchPostsByUser();
-    console.log("user: ", user);
-    console.log("posts: ", posts);
   }, []);
-
-  //   const fetchUserDetails = () => {
-  //     fetch(`http://jsonplaceholder.typicode.com/users/${userId}`)
-  //       .then((response) => response.json())
-  //       .then((json) => setUser(json));
-  //   };
-
-  //   const fetchPostsByUser = () => {
-  //     fetch(`http://jsonplaceholder.typicode.com/posts?userId=1`)
-  //       .then((response) => response.json())
-  //       .then((json) => setPosts(json));
-  //   };
 
   const { name, username, email, phone, website, address, company } = user;
 

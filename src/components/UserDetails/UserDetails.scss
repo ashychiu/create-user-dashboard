@@ -1,11 +1,12 @@
 @use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
 
 div > h2 {
   padding-left: 1rem;
 }
 .details {
   &__link {
-    color: royalblue;
+    color: $primary-cta;
   }
   &__info {
     padding: 1rem;
@@ -18,7 +19,7 @@ div > h2 {
     margin-bottom: 2rem;
     @include tablet {
       padding: 1rem;
-      border: 1px solid #cccccc;
+      border: 1px solid $primary-light;
       flex-basis: 30%;
     }
   }
@@ -29,7 +30,7 @@ div > h2 {
 .posts {
   &__heading {
     padding-top: 2rem;
-    border-top: 1px solid #cccccc;
+    border-top: 1px solid $primary-light;
     @include tablet {
       padding-top: 0;
       border: none;
@@ -45,10 +46,10 @@ div > h2 {
   }
   &__card {
     margin: 2rem 0;
-    border-bottom: 1px solid #cccccc;
+    border-bottom: 1px solid $primary-light;
     @include tablet {
       padding: 1rem;
-      border: 1px solid #cccccc;
+      border: 1px solid $primary-light;
       flex-basis: 30%;
     }
   }

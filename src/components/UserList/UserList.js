@@ -42,7 +42,6 @@ const UserList = () => {
         }
       });
       setUserList(filtered);
-      console.log("filtered: ", userList);
     };
     filterUserList(query);
   }, [query]);
@@ -54,17 +53,18 @@ const UserList = () => {
         <div>
           <h4>Search</h4>
           <input
-            className="userList__searchbar"
+            className="input"
             onChange={(e) => {
               setQuery(e.target.value);
-              console.log("input: ", e.target.value);
-              console.log("query: ", query);
             }}
           />
         </div>
         <div>
           <h4>Sort by</h4>
-          <select onChange={(e) => setSortType(e.target.value)}>
+          <select
+            onChange={(e) => setSortType(e.target.value)}
+            className="select"
+          >
             <option value="name" defaultValue="selected">
               Name
             </option>

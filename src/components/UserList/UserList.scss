@@ -1,12 +1,13 @@
 @use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
 
 div.userList > div:nth-of-type(even) {
-  background: #f1f1f1;
+  background: $secondary-light;
 }
 
 div.userList > div:last-of-type {
   @include tablet {
-    border-bottom: 1px solid #cccccc;
+    border-bottom: 1px solid $primary-light;
   }
 }
 .userList {
@@ -24,9 +25,17 @@ div.userList > div:last-of-type {
     }
   }
 }
+
+.select,
+.input {
+  width: 10rem;
+  height: 2rem;
+  border-radius: 5px;
+  border: 1px solid #bbbbbb;
+}
 .userCard {
   width: 100%;
-  border-top: 1px solid #cccccc;
+  border-top: 1px solid $primary-light;
   display: flex;
   flex-direction: row;
   gap: 1rem;
@@ -48,6 +57,6 @@ div.userList > div:last-of-type {
     }
   }
   &__email {
-    color: blue;
+    color: $primary-cta;
   }
 }
