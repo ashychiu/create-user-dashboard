@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import UserList from "./components/UserList/UserList";
+import WeatherApp from "./components/WeatherApp/WeatherApp";
 import UserDetails from "./components/UserDetails/UserDetails";
 import "./styles/global.scss";
 
