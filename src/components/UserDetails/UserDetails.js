@@ -13,7 +13,7 @@ const UserDetails = (props) => {
     const fetchUserDetails = async () => {
       try {
         const res = await fetch(
-          `http://jsonplaceholder.typicode.com/users/${userId}`
+          `https://jsonplaceholder.typicode.com/users/${userId}`
         );
         const userData = await res.json();
         setUser(userData);

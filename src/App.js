@@ -9,6 +9,7 @@ function App() {
     <BrowserRouter>
       <Switch>
         <Route path="/" exact component={UserList} />
+        <Route path="/weather" component={WeatherApp} />
         <Route
           path="/user/:userId"
           render={(routerProps) => {
