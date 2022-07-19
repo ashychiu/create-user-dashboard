@@ -48,23 +48,19 @@ const BlogPosts = () => {
       <input type="text" onChange={(e) => setQuery(e.target.value)} />
       <select onChange={(e) => setAuthor(e.target.value)}>
         <option selected>UserID</option>
-        {authorIDs.map((author, index) => {
-          return (
+        {authorIDs.map((author, index) => 
             <option key={index} value={author}>
               Posts by User ID: {author}
             </option>
-          );
-        })}
+        )}
       </select>
       <div>
-        {postsToRender.map((post, index) => {
-          return (
+        {postsToRender.map((post, index) => 
             <div key={index}>
               {/* <p>Author: {post.userId}</p> */}
               <p>Title: {post.title}</p>
             </div>
-          );
-        })}
+        )}
       </div>
     </main>
   );
