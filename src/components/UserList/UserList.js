@@ -58,11 +58,11 @@ const UserList = () => {
             onChange={(e) => setSortType(e.target.value)}
             className="select"
           >
-            <option value="username">Alias</option>
             <option value="name" defaultValue="selected">
               Name
             </option>
             <option value="email">Email</option>
+            <option value="username">User Name</option>
           </select>
         </div>
       </div>
@@ -76,7 +76,7 @@ const UserList = () => {
                   <div className="userCard__container">
                     {user.name}
                     <br />
-                    Alias: {user.username}
+                    {user.username}
                   </div>
                   <div className="userCard__container">
                     <a
