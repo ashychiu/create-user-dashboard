@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { fetchUserList } from "../Helpers";
 import "./UserList.scss";
 
 const UserList = () => {
@@ -7,25 +8,14 @@ const UserList = () => {
   const [filteredList, setFilteredList] = useState([]);
   const [sortType, setSortType] = useState("name");
   const [query, setQuery] = useState("");
-
+ 
   useEffect(() => {
-    const fetchUserList = async () => {
-      try {
-        const res = await fetch("https://jsonplaceholder.typicode.com/users");
-        const userData = await res.json();
-        if (sortType === "username") {
-          userData.sort((a, b) => a.username.localeCompare(b.username));
-        } else if (sortType === "email") {
-          userData.sort((a, b) => a.email.localeCompare(b.email));
-        } else {
-          userData.sort((a, b) => a.name.localeCompare(b.name));
-        }
-        setUserList(userData);
-      } catch (err) {
-        console.log(err);
-      }
+    const fetchData = async () => {
+      const userListData = await fetchUserList(sortType);
+      setUserList(userListData);
     };
-    fetchUserList();
+
+    fetchData();
   }, [sortType]);
 
   useEffect(() => {
@@ -68,10 +58,10 @@ const UserList = () => {
             onChange={(e) => setSortType(e.target.value)}
             className="select"
           >
+            <option value="username">Alias</option>
             <option value="name" defaultValue="selected">
               Name
             </option>
-            <option value="username">Username</option>
             <option value="email">Email</option>
           </select>
         </div>
@@ -86,7 +76,7 @@ const UserList = () => {
                   <div className="userCard__container">
                     {user.name}
                     <br />
-                    {user.username}
+                    Alias: {user.username}
                   </div>
                   <div className="userCard__container">
                     <a
