@@ -8,7 +8,7 @@ const UserList = () => {
   const [filteredList, setFilteredList] = useState([]);
   const [sortType, setSortType] = useState("name");
   const [query, setQuery] = useState("");
- 
+
   useEffect(() => {
     const fetchData = async () => {
       const userListData = await fetchUserList(sortType);
@@ -68,7 +68,11 @@ const UserList = () => {
       </div>
       {listToRender.map((user) => {
         return (
-          <div key={user.id} className="userCard__container">
+          <div
+            key={user.id}
+            className="userCard__container"
+            data-testid="user-card"
+          >
             <Link to={`/user/${user.id}`}>
               <div className="userCard">
                 <div className="userCard__avatar"></div>
