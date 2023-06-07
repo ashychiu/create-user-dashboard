@@ -57,6 +57,7 @@ const UserList = () => {
           <select
             onChange={(e) => setSortType(e.target.value)}
             className="select"
+            disabled={listToRender.length}
           >
             <option value="name" defaultValue="selected">
               Name
@@ -73,26 +74,23 @@ const UserList = () => {
             className="userCard__container"
             data-testid="user-card"
           >
-            <Link to={`/user/${user.id}`}>
-              <div className="userCard">
-                <div className="userCard__avatar"></div>
-                <div className="userCard__info">
+            <div className="userCard">
+              <div className="userCard__avatar" data-testid="user-avatar"></div>
+              <div className="userCard__info">
+                <Link to={`/user/${user.id}`}>
                   <div className="userCard__container">
                     {user.name}
                     <br />
                     {user.username}
-                  </div>
-                  <div className="userCard__container">
-                    <a
-                      href={`mailto:${user.email}`}
-                      className="userCard__email"
-                    >
-                      {user.email.toLowerCase()}
-                    </a>
-                  </div>
+                  </div>{" "}
+                </Link>
+                <div className="userCard__container">
+                  <a href={`mailto:${user.email}`} className="userCard__email">
+                    {user.email.toLowerCase()}
+                  </a>
                 </div>
               </div>
-            </Link>
+            </div>
           </div>
         );
       })}

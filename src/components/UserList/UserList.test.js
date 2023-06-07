@@ -29,10 +29,11 @@ describe("UserList component UI", () => {
     render(<UserList />);
     const dropDown = screen.getByRole("combobox");
     expect(dropDown).toBeInTheDocument(); // Assert that the dropdown element is present
+    expect(dropDown).not.toBeDisabled();
 
     await userEvent.click(dropDown); // Simulate a click on the dropdown to open the options
 
-    const userNameOption = screen.getByText(/User Name/i);
+    const userNameOption = screen.getByText("User Name");
     expect(userNameOption).toBeInTheDocument(); // Assert that the "User Name" option is present
 
     const emailOption = screen.getByText(/Email/i);
