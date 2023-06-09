@@ -31,11 +31,13 @@ const UserList = () => {
         ) {
           return user;
         }
+        // Default return
+        return null;
       });
       setFilteredList(filtered);
     };
     filterUserList(query);
-  }, [query]);
+  }, [query, userList]);
 
   const listToRender = query ? filteredList : userList;
 
@@ -50,6 +52,7 @@ const UserList = () => {
             onChange={(e) => {
               setQuery(e.target.value);
             }}
+            // disabled={true}
           />
         </div>
         <div>
@@ -57,7 +60,6 @@ const UserList = () => {
           <select
             onChange={(e) => setSortType(e.target.value)}
             className="select"
-            disabled={listToRender.length}
           >
             <option value="name" defaultValue="selected">
               Name
@@ -67,33 +69,33 @@ const UserList = () => {
           </select>
         </div>
       </div>
-      {listToRender.map((user) => {
-        return (
-          <div
-            key={user.id}
-            className="userCard__container"
-            data-testid="user-card"
-          >
-            <div className="userCard">
+      {listToRender.map((user) => (
+        <div
+          key={user.id}
+          className="userCard__container"
+          data-testid="user-card"
+        >
+          <div className="userCard">
+            <Link to={`/user/${user.id}`}>
               <div className="userCard__avatar" data-testid="user-avatar"></div>
-              <div className="userCard__info">
-                <Link to={`/user/${user.id}`}>
-                  <div className="userCard__container">
-                    {user.name}
-                    <br />
-                    {user.username}
-                  </div>{" "}
-                </Link>
+            </Link>
+            <div className="userCard__info">
+              <Link to={`/user/${user.id}`}>
                 <div className="userCard__container">
-                  <a href={`mailto:${user.email}`} className="userCard__email">
-                    {user.email.toLowerCase()}
-                  </a>
+                  {user.name}
+                  <br />
+                  {user.username}
                 </div>
+              </Link>
+              <div className="userCard__container">
+                <a href={`mailto:${user.email}`} className="userCard__email">
+                  {user.email.toLowerCase()}
+                </a>
               </div>
             </div>
           </div>
-        );
-      })}
+        </div>
+      ))}
     </div>
   );
 };

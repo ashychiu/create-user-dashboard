@@ -7,7 +7,6 @@ describe('fetchUserList', () => {
         json: () => Promise.resolve([
           { id: 1, name: 'John Doe', username: 'johndoe', email: 'john@example.com' },
           { id: 2, name: 'Jane Smith', username: 'janesmith', email: 'jane@example.com' },
-          // Add more sample user data here if needed
         ]),
       });
     });
@@ -23,7 +22,6 @@ describe('fetchUserList', () => {
     expect(result).toEqual([
       { id: 2, name: 'Jane Smith', username: 'janesmith', email: 'jane@example.com' },
       { id: 1, name: 'John Doe', username: 'johndoe', email: 'john@example.com' },
-      // Add more expected user data here if needed
     ]);
     expect(global.fetch).toHaveBeenCalledWith('https://jsonplaceholder.typicode.com/users');
   });
@@ -33,7 +31,6 @@ describe('fetchUserList', () => {
     expect(result).toEqual([
       { id: 2, name: 'Jane Smith', username: 'janesmith', email: 'jane@example.com' },
       { id: 1, name: 'John Doe', username: 'johndoe', email: 'john@example.com' },
-      // Add more expected user data here if needed
     ]);
     expect(global.fetch).toHaveBeenCalledWith('https://jsonplaceholder.typicode.com/users');
   });
@@ -43,7 +40,6 @@ describe('fetchUserList', () => {
     expect(result).toEqual([
       { id: 2, name: 'Jane Smith', username: 'janesmith', email: 'jane@example.com' },
       { id: 1, name: 'John Doe', username: 'johndoe', email: 'john@example.com' },
-      // Add more expected user data here if needed
     ]);
     expect(global.fetch).toHaveBeenCalledWith('https://jsonplaceholder.typicode.com/users');
   });
