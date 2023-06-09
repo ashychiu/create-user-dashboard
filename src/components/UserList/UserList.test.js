@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import UserList from "./UserList";
 import "@testing-library/jest-dom";
 import { logRoles } from "@testing-library/dom";
@@ -111,3 +111,20 @@ describe("UserList component API integration", () => {
     });
   });
 });
+
+
+describe('invisible delete button',  () => {
+  it('should be truthy', async () => {
+    const consoleSpy = jest.spyOn(console, 'log');
+
+    render(<UserList />)
+    const deleteButton = screen.getByTestId('delete-button')
+    expect(deleteButton).toHaveStyle({ backgroundColor: 'red' })
+    expect(deleteButton).toBeTruthy()
+    expect(deleteButton).toBeInTheDocument()
+    expect(deleteButton).not.toBeVisible()
+
+    await userEvent.click(deleteButton)
+    expect(consoleSpy).toBeCalledWith('clicked');
+  })
+})

@@ -45,6 +45,13 @@ const UserList = () => {
     <div className="userList">
       <h1 className="userList__heading">Users</h1>
       <div className="userList__container">
+        <button
+          data-testid="delete-button"
+          style={{ display: "none", backgroundColor: "red", border: "0px" }}
+          onClick={() => console.log("clicked")}
+        >
+          Delete
+        </button>
         <div>
           <h4>Search</h4>
           <input
